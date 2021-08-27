@@ -207,11 +207,15 @@ resource "random_string" "bucket_name" {
     upper = false
 }
 
-resource "aws_s3_bucket" "flow_log_bucket" {
-    bucket = "${random_string.bucket_name.result}-flow-logs"
-    force_destroy = true
-    block_public_acls   = false
-    block_public_policy = false
+resource "aws_s3_bucket" "bucket_good_1" {
+  bucket = "bucket_good"
+}
+
+resource "aws_s3_bucket_public_access_block" "access_good_1" {
+  bucket = aws_s3_bucket.bucket_good_1.id
+
+  block_public_acls   = true
+  block_public_policy = true
 }
 
 data "aws_caller_identity" "current" {}
