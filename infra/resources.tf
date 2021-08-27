@@ -210,8 +210,8 @@ resource "random_string" "bucket_name" {
 resource "aws_s3_bucket" "flow_log_bucket" {
     bucket = "${random_string.bucket_name.result}-flow-logs"
     force_destroy = true
-    block_public_acls   = true
-    block_public_policy = true
+    block_public_acls   = false
+    block_public_policy = false
 }
 
 data "aws_caller_identity" "current" {}
