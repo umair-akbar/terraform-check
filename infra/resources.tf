@@ -30,6 +30,10 @@ resource "aws_vpc" "new_vpc" {
     }
 }
 
+resource "aws_default_security_group" "default" {
+  vpc_id = aws_vpc.ok_vpc.id
+}
+
 
 locals {
     golang_user_data = <<EOF
@@ -206,6 +210,8 @@ resource "random_string" "bucket_name" {
 resource "aws_s3_bucket" "flow_log_bucket" {
     bucket = "${random_string.bucket_name.result}-flow-logs"
     force_destroy = true
+    block_public_acls   = true
+    block_public_policy = true
 }
 
 data "aws_caller_identity" "current" {}
