@@ -17,3 +17,13 @@ jobs:
           quiet: true # optional: display only failed checks
           soft_fail: true # optional: do not return an error code if there are failed checks
           framework: all # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
+  bridgecrew:
+    runs-on: ubuntu-latest
+    name: bridgecrew-action
+    steps:
+      - name: Run Bridgecrew
+        id: Bridgecrew
+        uses: bridgecrewio/bridgecrew-action@master
+        with:
+           api-key: ${{ secrets.BRIDGECREW_API_KEY }}
+           
