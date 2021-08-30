@@ -1,0 +1,14 @@
+name: bridgecrew-job
+on:
+  push:
+    branches: [ master ]
+jobs:
+  bridgecrew-job:
+    runs-on: ubuntu-latest
+    name: bridgecrew-action
+    steps:
+      - name: Run Bridgecrew
+        id: Bridgecrew
+        uses: bridgecrewio/bridgecrew-action@master
+        with:
+           api-key: ${{ secrets.BRIDGECREW_API_KEY }}
