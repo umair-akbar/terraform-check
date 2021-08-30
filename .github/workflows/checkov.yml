@@ -14,4 +14,10 @@ jobs:
         uses: bridgecrewio/checkov-action@master
         with:
           directory: infra/
+          quiet: true # optional: display only failed checks
+          soft_fail: true # optional: do not return an error code if there are failed checks
+          framework: cloudformation # optional: run only on a specific infrastructure {cloudformation,terraform,kubernetes,all}
+          output_format: json # optional: the output format, one of: cli, json, junitxml, github_failed_only
+          download_external_modules: true # optional: download external terraform modules from public git repositories and terraform registry
+          log_level: DEBUG # optional: set log level. Default WARNING
           
