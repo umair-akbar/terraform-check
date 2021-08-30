@@ -7,3 +7,5 @@
 * Run the Github Action
 * See results
   
+  example
+  
